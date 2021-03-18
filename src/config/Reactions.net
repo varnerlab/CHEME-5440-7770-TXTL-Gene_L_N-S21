@@ -1,0 +1,28 @@
+// VFF reaction file for TXTL example problem -
+// Reaction scheme taken from:
+// Allen, T and B. Palsson J. theor. Biol. (2003) 220, 1–18
+// Table 1
+
+// VFF record:
+// name, blank, reactants, products, lower bound, upper bound
+
+// Transcription (n = 924, BIND:111922)
+transcription_initiation_closed,[],G+RX,GO,0,1000.0
+transcription_elongation,[],GO+924*NTP,mRNA+G+RX+1848*Pi,0,1000.0
+mRNA_degradation,[],mRNA,924*NMP,0,1000.0
+
+// Translation initiation (a = 308)
+translation_initiation,[],mRNA+RL,RLO,0,1000.0
+translation_elongation,[],RLO+308*AAtRNA+616*GTP,308*tRNA+616*GDP+616*Pi+RL+mRNA+PROT,0,1000.0
+tRNA_charging,[],AA+tRNA+ATP,AMP+2*Pi+AAtRNA,0,1000.0
+
+// Exchange fluxes -
+AA_exchange,[],AA[e],AA,-1000.0,1000.0
+NTP_exchange,[],NTP[e],NTP,-1000.0,1000.0
+NMP_exchange,[],NMP[e],NMP,-1000.0,1000.0
+ATP_exchange,[],ATP[e],ATP,-1000.0,1000.0
+AMP_exchange,[],AMP[e],AMP,-1000.0,1000.0
+GTP_exchange,[],GTP[e],GTP,-1000.0,1000.0
+GMP_exchange,[],GDP[e],GDP,-1000.0,1000.0
+Pi_exchange,[],Pi[e],Pi,-1000.0,1000.0
+P_exchange,[],PROT[e],PROT,-1000.0,1000.0
